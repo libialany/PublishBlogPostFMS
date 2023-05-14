@@ -1,3 +1,9 @@
+### description
+
+Simple example about roles and FSM.
+
+### diagram
+
 ```mermaid
 stateDiagram-v2
     [*] --> Review     : send post
