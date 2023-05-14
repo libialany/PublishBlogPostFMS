@@ -6,7 +6,7 @@ Simple example about roles and FSM.
 
 ```mermaid
 stateDiagram-v2
-    [*] --> Review     : send post
+    [*] --> Review     : Send post
     Review --> Publish : Publish article
     Review --> Reject  : article rejected
     Reject --> [*]     : After reject
