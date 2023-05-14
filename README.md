@@ -75,7 +75,7 @@ admin can list all posts.
 `localhost:3000/posts`
 ```
 {
-    "userId":"2"
+    "userId":"1"
 }
 ```
 
