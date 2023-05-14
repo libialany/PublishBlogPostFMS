@@ -60,6 +60,24 @@ admin can approve/reject post
    "userId":"1"
 }
 ```
+another endpoints :).
+
+list all post of a user
+
+`localhost:3000/posts/2/author`
+```
+{
+    "userId":"2"
+}
+```
+admin can list all posts.
+
+`localhost:3000/posts`
+```
+{
+    "userId":"2"
+}
+```
 
 ### note
 
