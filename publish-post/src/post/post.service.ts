@@ -22,16 +22,27 @@ export class PostService {
     });
   }
 
-  async listAdmin(): Promise<Post[]> {
+  async listAdmin(id: string): Promise<Post[]> {
+    const author = await this.userService.userById({
+      where: { id: Number(id) },
+    });
+    if (!author.isAdmin) throw new UnauthorizedException('No user authorized');
     return this.prisma.post.findMany();
   }
-  async listById(params: {
-    skip?: number;
-    take?: number;
-    cursor?: Prisma.PostWhereUniqueInput;
-    where?: Prisma.PostWhereInput;
-    orderBy?: Prisma.PostOrderByWithRelationInput;
-  }): Promise<Post[]> {
+  async listById(
+    params: {
+      skip?: number;
+      take?: number;
+      cursor?: Prisma.PostWhereUniqueInput;
+      where?: Prisma.PostWhereInput;
+      orderBy?: Prisma.PostOrderByWithRelationInput;
+    },
+    id: string,
+  ): Promise<Post[]> {
+    const author = await this.userService.userById({
+      where: { id: Number(id) },
+    });
+    if (author.isAdmin) throw new UnauthorizedException('No user authorized');
     const { skip, take, cursor, where, orderBy } = params;
     return this.prisma.post.findMany({
       skip,

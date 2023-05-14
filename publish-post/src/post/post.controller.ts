@@ -21,13 +21,16 @@ export class PostController {
   }
 
   @Get()
-  listAdmin() {
-    return this.postService.listAdmin();
+  listAdmin(@Body('userId') userId: string) {
+    return this.postService.listAdmin(userId);
   }
 
   @Get(':id/author')
-  listById(@Param('id') id: string) {
-    return this.postService.listById({ where: { id: Number(id) } });
+  listById(@Param('id') id: string, @Body('userId') userId: string) {
+    return this.postService.listById(
+      { where: { authorId: Number(id) } },
+      userId,
+    );
   }
 
   @Patch(':id/reject')

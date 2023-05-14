@@ -18,15 +18,13 @@ in postgresql:
 
 `create database test;`
 
+`cd PublishBlogPostFMS/publish-post`
+
 `npm i`
 
 `cp .env.example .env`
 
 `npx prisma migrate dev --name init`
-
-`npx prisma seed`
-
-if you want create another seeder,after that run:
 
 `npx prisma migrate reset`
 
@@ -66,3 +64,5 @@ admin can approve/reject post
 ### note
 
 I'm not implementing session/cookies, it's just a simple example of Implementing State Machines (FMS) with roles assigned.
+
+**I am going to implement JWT for the next improvement**
